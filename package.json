@@ -7,7 +7,9 @@
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "dependencies": {
-        "express": "~4.13.1"
+        "express": "~4.13.1",
+        "fabric-ca-client": "^1.4.4",
+        "fabric-network": "^1.4.4"
     },
     "author": "",
     "license": "",

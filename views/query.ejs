@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%- include('partials/head') %>
+</head>
+
+<body>
+  <button>Query All Cars</button>
+  
+  <div id="div1">
+    <h2>Fabcar Query Result</h2>
+  </div>
+
+</body>
+</html>
+
+<script>
+  $(document).ready(function(){
+    $("button").click(function(){
+      $.get("../../api/query", function(data, status){
+        $("#div1").text(JSON.stringify(data));
+      });
+    });
+  });
+</script>
