@@ -5,13 +5,13 @@ var bodyParser = require('body-parser');
 
 // Constants
 const PORT = 8080;
-const HOST = "127.0.0.1";
+const HOST = "0.0.0.0";
 
  // Hyperledger Bridge
 const { FileSystemWallet, Gateway } = require('fabric-network');
 const fs = require('fs');
 const path = require('path');
-const ccpPath = path.resolve(__dirname, '..', '..', 'basic-network', 'connection.json');
+const ccpPath = path.resolve(__dirname, 'connection.json');
 const ccpJSON = fs.readFileSync(ccpPath, 'utf8');
 const ccp = JSON.parse(ccpJSON);
 
@@ -28,7 +28,7 @@ app.get('/', function (req, res) {
 });
 
 // Qeury all cars page
-app.get('/api/query', function (req, res) {
+app.get('/api/queryallcars', function (req, res) {
     res.render('query', { title: "Query", activate: "query" });
 });
 
@@ -70,7 +70,7 @@ app.get('/api/query', async function (req, res) {
 
 // Query car handle
 // localhost:8080/api/querycar?carno=CAR5
-app.get('/api/querycar/', async function (req, res) {
+app.get('/api/querycars/', async function (req, res) {
     // create the key value store as defined in the fabric-client/config/default.json 'key-value-store' setting
     try {
 	var carno = req.query.carno;
@@ -217,4 +217,4 @@ app.post('/api/changeowner/', async function (req, res) {
 
 // server start
 app.listen(PORT, HOST);
-console.log(`Running on http://10.0.2.15:${PORT}`);
+console.log(`Running on http://${HOST}:${PORT}`);
